@@ -50,14 +50,14 @@ public:
 	 // For correct access to shared data - max - use mutex
 	 void CompareAndSet(Node<T>* candidate) {
 		 m.lock();
-		 if (this->GetMax() == NULL) this->SetMax(candidate);
-		 else if (candidate->GetKey() >= (this->GetMax())->GetKey())  this->SetMax(candidate);
+		 if (this->GetMax() == NULL) _max = candidate;
+		 else if (candidate->GetKey() >= (this->GetMax())->GetKey())  _max = candidate;
 		 m.unlock();
 	 }
 
-	 // Correct ????????????? 
+	
 	 Node<T>* GetMax() { return _max; }
-	 void SetMax(Node<T>* max) { _max = max; }
+	 
  };
 
 template <typename T>
